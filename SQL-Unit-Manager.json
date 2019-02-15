@@ -1,0 +1,109 @@
+{
+    "test-collections": [
+        {
+            "id": 0,
+            "name": "demo-collection",
+            "description": "This is a collection of tests used during development",
+            "config": {
+                "server": "DEV",
+                "dialect": "MSSQL",
+                "keep-results": 10,
+                "fail-threshold": 3,
+                "measure-performance": true,
+                "record-results": true,
+                "generate-report": true,
+                "allow-stored-procedures": false
+            },
+            "tests": [
+                {
+                    "id": 0,
+                    "name": "tableselect_QWERTY",
+                    "description": "This will test QWERTY's performance",
+                    "sql": "somefile.sql",
+                    "expected": "somefile-expected.json",
+                    "actual": "somefile-actual.json"
+                },
+                {
+                    "id": 1,
+                    "name": "somestoredproc_WASD",
+                    "description": "This will test somestoredproc with WASD",
+                    "sql": "somefile2.sql",
+                    "expected": "somefile2-expected.json",
+                    "actual": "somefile2-actual.json"
+                },
+                {
+                    "id": 2,
+                    "name": "sometest_DEMO",
+                    "description": "This is a test",
+                    "sql": "sometest_DEMO.sql",
+                    "expected": "sometest_DEMO-expected.json",
+                    "actual": "sometest_DEMO-actual.json"
+                },
+                {
+                    "id": 3,
+                    "name": "sometest_DEMO",
+                    "description": "This is a test",
+                    "sql": "sometest_DEMO.sql",
+                    "expected": "sometest_DEMO-expected.json",
+                    "actual": "sometest_DEMO-actual.json"
+                },
+                {
+                    "id": 4,
+                    "name": "sometest_DEMO",
+                    "description": "This is a test",
+                    "sql": "sometest_DEMO.sql",
+                    "expected": "sometest_DEMO-expected.json",
+                    "actual": "sometest_DEMO-actual.json"
+                },
+                {
+                    "id": 5,
+                    "name": "sometest_DEMO",
+                    "description": "This is a test",
+                    "sql": "sometest_DEMO.sql",
+                    "expected": "sometest_DEMO-expected.json",
+                    "actual": "sometest_DEMO-actual.json"
+                },
+                {
+                    "id": 6,
+                    "name": "sometest_DEMO",
+                    "description": "This is a test",
+                    "sql": "sometest_DEMO.sql",
+                    "expected": "sometest_DEMO-expected.json",
+                    "actual": "sometest_DEMO-actual.json"
+                },
+                {
+                    "id": 7,
+                    "name": "sometest_DEMO",
+                    "description": "This is a test",
+                    "sql": "sometest_DEMO.sql",
+                    "expected": "sometest_DEMO-expected.json",
+                    "actual": "sometest_DEMO-actual.json"
+                },
+                {
+                    "id": 8,
+                    "name": "sometest_DEMO",
+                    "description": "This is a test",
+                    "sql": "sometest_DEMO.sql",
+                    "expected": "sometest_DEMO-expected.json",
+                    "actual": "sometest_DEMO-actual.json"
+                },
+                {
+                    "id": 9,
+                    "name": "sometest_DEMO",
+                    "description": "This is a test",
+                    "sql": "sometest_DEMO.sql",
+                    "expected": "sometest_DEMO-expected.json",
+                    "actual": "sometest_DEMO-actual.json"
+                },
+                {
+                    "id": 10,
+                    "name": "sometest_DEMO",
+                    "description": "This is a test",
+                    "sql": "sometest_DEMO.sql",
+                    "expected": "sometest_DEMO-expected.json",
+                    "actual": "sometest_DEMO-actual.json"
+                }
+            ]
+        }
+    ]
+}
