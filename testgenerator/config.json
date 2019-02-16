@@ -1,0 +1,4 @@
+{
+    "test-manager": "../SQL-Unit-Manager.json",
+    "test-folder": "./tests"
+}
