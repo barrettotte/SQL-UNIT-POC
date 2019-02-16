@@ -2,6 +2,7 @@
 
 A POC MSSQL unit testing framework with Python.
 
+
 (GitLab CI/CD status here)
 
 
@@ -10,7 +11,7 @@ A POC MSSQL unit testing framework with Python.
 
 
 ## Project Milestones
-- [ ] Test generator backend
+- [x] Test generator backend
 - [ ] Test generator GUI with PyQt5
 - [ ] Test framework foundations
 - [ ] Test runner basics
@@ -35,11 +36,17 @@ A POC MSSQL unit testing framework with Python.
 
 
 ## Repository Details
-* ...
+| Directory/File        | Description                                |
+| --------------------- | -------------------------------------------|
+| SQL-Unit-Manager.json | The master data file / config for SQL-Unit | 
+| testgenerator/        | Generate new unit test stubs and unit test collections |
 
 
-## Initializing Unit Tests
-* ...
+## Creating new Unit Tests and Unit Test Collections
+* CLI
+  * TBD
+* GUI
+  * TBD
 
 
 ## Configuration
@@ -62,7 +69,7 @@ A POC MSSQL unit testing framework with Python.
 * ...
 
 
-## Development
+## Development Notes
 * Virtual Environment
   * Install ```pip install virtualenv```
   * Init ```cd ./projectfolder && virtualenv venv```
@@ -72,3 +79,7 @@ A POC MSSQL unit testing framework with Python.
 
 ## References
 * ...
+
+
+## Future Ideas
+* Test Generator - generate test based off existing test
