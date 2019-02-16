@@ -2,7 +2,6 @@
     "test-collections": [
         {
             "id": 0,
-            "type": "collection",
             "name": "demo-collection",
             "description": "This is a collection of tests used during development",
             "config": {
@@ -18,263 +17,37 @@
             "tests": [
                 {
                     "id": 0,
-                    "type": "test",
                     "name": "tableselect_QWERTY",
-                    "description": "This will test QWERTY's performance",
-                    "sql": "somefile.sql",
-                    "expected": "somefile-expected.json",
-                    "actual": "somefile-actual.json"
+                    "description": "This will test QWERTY's performance"
                 },
                 {
                     "id": 1,
-                    "type": "test",
                     "name": "somestoredproc_WASD",
-                    "description": "This will test somestoredproc with WASD",
-                    "sql": "somefile2.sql",
-                    "expected": "somefile2-expected.json",
-                    "actual": "somefile2-actual.json"
-                },
-                {
-                    "id": 2,
-                    "type": "test",
-                    "name": "sometest_DEMO",
-                    "description": "This is a test",
-                    "sql": "sometest_DEMO.sql",
-                    "expected": "sometest_DEMO-expected.json",
-                    "actual": "sometest_DEMO-actual.json"
-                },
-                {
-                    "id": 3,
-                    "type": "test",
-                    "name": "sometest_DEMO",
-                    "description": "This is a test",
-                    "sql": "sometest_DEMO.sql",
-                    "expected": "sometest_DEMO-expected.json",
-                    "actual": "sometest_DEMO-actual.json"
-                },
-                {
-                    "id": 4,
-                    "type": "test",
-                    "name": "sometest_DEMO",
-                    "description": "This is a test",
-                    "sql": "sometest_DEMO.sql",
-                    "expected": "sometest_DEMO-expected.json",
-                    "actual": "sometest_DEMO-actual.json"
-                },
-                {
-                    "id": 5,
-                    "type": "test",
-                    "name": "sometest_DEMO",
-                    "description": "This is a test",
-                    "sql": "sometest_DEMO.sql",
-                    "expected": "sometest_DEMO-expected.json",
-                    "actual": "sometest_DEMO-actual.json"
-                },
-                {
-                    "id": 6,
-                    "type": "test",
-                    "name": "sometest_DEMO",
-                    "description": "This is a test",
-                    "sql": "sometest_DEMO.sql",
-                    "expected": "sometest_DEMO-expected.json",
-                    "actual": "sometest_DEMO-actual.json"
-                },
-                {
-                    "id": 7,
-                    "type": "test",
-                    "name": "sometest_DEMO",
-                    "description": "This is a test",
-                    "sql": "sometest_DEMO.sql",
-                    "expected": "sometest_DEMO-expected.json",
-                    "actual": "sometest_DEMO-actual.json"
-                },
-                {
-                    "id": 8,
-                    "type": "test",
-                    "name": "sometest_DEMO",
-                    "description": "This is a test",
-                    "sql": "sometest_DEMO.sql",
-                    "expected": "sometest_DEMO-expected.json",
-                    "actual": "sometest_DEMO-actual.json"
-                },
-                {
-                    "id": 9,
-                    "type": "test",
-                    "name": "sometest_DEMO",
-                    "description": "This is a test",
-                    "sql": "sometest_DEMO.sql",
-                    "expected": "sometest_DEMO-expected.json",
-                    "actual": "sometest_DEMO-actual.json"
-                },
-                {
-                    "id": 10,
-                    "type": "test",
-                    "name": "sometest_DEMO",
-                    "description": "This is a test",
-                    "sql": "sometest_DEMO.sql",
-                    "expected": "sometest_DEMO-expected.json",
-                    "actual": "sometest_DEMO-actual.json"
+                    "description": "This will test somestoredproc with WASD"
                 }
             ]
         },
         {
             "id": 1,
-            "type": "collection",
-            "name": "WASD",
-            "description": "This is a generated collection",
+            "name": "testcoll123",
+            "description": "This was generated with my CLI",
             "config": {
-                "server": "QWERTY",
-                "dialect": "DB2",
-                "keep-results": 100,
+                "server": "BARRETT-DB",
+                "dialect": "MSSQL",
+                "keep-results": 25,
                 "fail-threshold": 0,
                 "measure-performance": "true",
                 "record-results": "true",
                 "generate-report": "true",
-                "allow-stored-procedures": "false"
+                "allow-stored-procedures": "true"
             },
             "tests": [
                 {
                     "id": 0,
-                    "type": "test",
-                    "name": "another_test",
-                    "description": "This is another test",
-                    "sql": "another_test.sql",
-                    "expected": "another_test-expected.json",
-                    "actual": "another_test-actual.json"
-                },
-                {
-                    "id": 1,
-                    "type": "test",
-                    "name": "another_test",
-                    "description": "This is another test",
-                    "sql": "another_test.sql",
-                    "expected": "another_test-expected.json",
-                    "actual": "another_test-actual.json"
-                },
-                {
-                    "id": 2,
-                    "type": "test",
-                    "name": "another_test",
-                    "description": "This is another test",
-                    "sql": "another_test.sql",
-                    "expected": "another_test-expected.json",
-                    "actual": "another_test-actual.json"
-                },
-                {
-                    "id": 3,
-                    "type": "test",
-                    "name": "another_test",
-                    "description": "This is another test",
-                    "sql": "another_test.sql",
-                    "expected": "another_test-expected.json",
-                    "actual": "another_test-actual.json"
-                },
-                {
-                    "id": 4,
-                    "type": "test",
-                    "name": "another_test",
-                    "description": "This is another test",
-                    "sql": "another_test.sql",
-                    "expected": "another_test-expected.json",
-                    "actual": "another_test-actual.json"
-                },
-                {
-                    "id": 5,
-                    "type": "test",
-                    "name": "another_test",
-                    "description": "This is another test",
-                    "sql": "another_test.sql",
-                    "expected": "another_test-expected.json",
-                    "actual": "another_test-actual.json"
-                },
-                {
-                    "id": 6,
-                    "type": "test",
-                    "name": "another_test",
-                    "description": "This is another test",
-                    "sql": "another_test.sql",
-                    "expected": "another_test-expected.json",
-                    "actual": "another_test-actual.json"
-                },
-                {
-                    "id": 7,
-                    "type": "test",
-                    "name": "another_test",
-                    "description": "This is another test",
-                    "sql": "another_test.sql",
-                    "expected": "another_test-expected.json",
-                    "actual": "another_test-actual.json"
-                },
-                {
-                    "id": 8,
-                    "type": "test",
-                    "name": "another_test",
-                    "description": "This is another test",
-                    "sql": "another_test.sql",
-                    "expected": "another_test-expected.json",
-                    "actual": "another_test-actual.json"
-                },
-                {
-                    "id": 9,
-                    "type": "test",
-                    "name": "another_test",
-                    "description": "This is another test",
-                    "sql": "another_test.sql",
-                    "expected": "another_test-expected.json",
-                    "actual": "another_test-actual.json"
+                    "name": "wasd",
+                    "description": "wasd"
                 }
             ]
-        },
-        {
-            "id": 2,
-            "type": "collection",
-            "name": "WASD",
-            "description": "This is a generated collection",
-            "config": {
-                "server": "QWERTY",
-                "dialect": "DB2",
-                "keep-results": 100,
-                "fail-threshold": 0,
-                "measure-performance": "true",
-                "record-results": "true",
-                "generate-report": "true",
-                "allow-stored-procedures": "false"
-            },
-            "tests": []
-        },
-        {
-            "id": 3,
-            "type": "collection",
-            "name": "WASD",
-            "description": "This is a generated collection",
-            "config": {
-                "server": "QWERTY",
-                "dialect": "DB2",
-                "keep-results": 100,
-                "fail-threshold": 0,
-                "measure-performance": "true",
-                "record-results": "true",
-                "generate-report": "true",
-                "allow-stored-procedures": "false"
-            },
-            "tests": []
-        },
-        {
-            "id": 4,
-            "type": "collection",
-            "name": "WASD",
-            "description": "This is a generated collection",
-            "config": {
-                "server": "QWERTY",
-                "dialect": "DB2",
-                "keep-results": 100,
-                "fail-threshold": 0,
-                "measure-performance": "true",
-                "record-results": "true",
-                "generate-report": "true",
-                "allow-stored-procedures": "false"
-            },
-            "tests": []
         }
     ]
 }

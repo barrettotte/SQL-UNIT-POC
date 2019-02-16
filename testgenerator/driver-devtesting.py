@@ -1,6 +1,5 @@
 # Test driver while developing
 
-import json, sys
 import utils, testgenerator
 
 def main():
@@ -28,13 +27,13 @@ def main():
     gen.addCollection(mockCollection1)
     gen.addTest(1, mockTest2)
 
-    #gen.removeTest(1, 2)
-    #gen.removeCollection(1)
-    #gen.removeTest(0, 2)
-    #gen.removeTest(0, 3)
+    #gen.removeTestById(1, 2)
+    #gen.removeCollectionById(1)
+    #gen.removeTestById(0, 2)
+    #gen.removeTestById(0, 3)
 
     gen.removeAllTests(3)
-    #gen.removeTest(0,2)
-    #gen.removeCollection(3)
+    #gen.removeTestById(0,2)
+    #gen.removeCollectionById(3)
 
 if __name__=='__main__': main()

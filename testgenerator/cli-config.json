@@ -1,0 +1,56 @@
+{
+    "info": {
+        "title": "SQL-Unit Test Generator CLI",
+        "version": "1.0.0",
+        "author": "Barrett Otte",
+        "description": "CLI for generating unit tests and test collections for SQL-Unit"
+    },
+    "commands":[
+        {
+            "command": "test",
+            "desc": "Generate a test"
+        },
+        {
+            "command": "collection",
+            "desc": "Generate a collection"
+        }
+    ],
+    "flags": [
+        {
+            "flag": "-h",  
+            "desc": "Display help information"
+        },
+        {
+            "flag": "-i",
+            "desc": "Show information about SQL-Unit Test Generator"
+        },
+        {
+            "flag": "-j", 
+            "desc": "[NOT IMPLEMENTED] Generate multiple unit tests with [json file]"
+        },
+        {
+            "flag": "-l", 
+            "desc": "Show list of test collections or all tests within test collection using name" 
+        },
+        {
+            "flag": "-r",
+            "desc": "Remove a single unit test {[collection-name] [test-name]} or collection {[collection-name]}"
+        },
+        {
+            "flag": "-s", 
+            "desc": "Generate single unit test {[collection-name] [test-name]} or collection {[collection-name]}"
+        },
+        {
+            "flag": "-t", 
+            "desc": "[NOT IMPLEMENTED] Generate multiple unit tests with [line delimited text file]"
+        },
+        {
+            "flag": "-v",
+            "desc": "Show version number"
+        },
+        {
+            "flag": "-x", 
+            "desc": "[NOT IMPLEMENTED] Generate multiple unit tests with [xml file]"
+        }
+    ]
+}
