@@ -1,18 +1,20 @@
 {
+    "test-manager": "../SQL-Unit-Manager.json",
+    "test-folder": "../SQL-Unit-Tests",
     "info": {
-        "title": "SQL-Unit Test Generator CLI",
+        "title": "SQL-Unit Test Manager CLI",
         "version": "1.0.0",
         "author": "Barrett Otte",
-        "description": "CLI for generating unit tests and test collections for SQL-Unit"
+        "description": "CLI for generating unit tests/collections and configuring SQL-Unit test manager"
     },
     "commands":[
         {
-            "command": "test",
-            "desc": "Generate a test"
+            "command": "collection",
+            "desc": "Collection context"
         },
         {
-            "command": "collection",
-            "desc": "Generate a collection"
+            "command": "test",
+            "desc": "Test context"
         }
     ],
     "flags": [
@@ -23,6 +25,10 @@
         {
             "flag": "-i",
             "desc": "Show information about SQL-Unit Test Generator"
+        },
+        {
+            "flag": "-f",
+            "desc": "Refresh test manager"
         },
         {
             "flag": "-j", 

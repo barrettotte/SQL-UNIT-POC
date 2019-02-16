@@ -1,13 +1,13 @@
-# Driver for TestGenerator
+# CLI for Test Manager
 
 import sys
-import utils, testgenerator
+import utils, testmanager
 
-class CliObj:
+class TestManagerCli:
     
     def __init__(self, args):
         self.args = args
-        self.helpData = utils.readJson(utils.getCwd() + "\cli-config.json")
+        self.helpData = utils.readJson("./config.json")
         self.cmds = self.helpData["commands"]
         self.flags = self.helpData["flags"]
 
@@ -25,9 +25,13 @@ class CliObj:
     def printVersion(self, cmd):
         print("version: " + self.helpData["info"]["version"])
 
+    def refreshJson(self, cmd):
+        self.tm.refreshJson()
+
     def getFuncDict(self):
         return {
-            "-h": self.printHelp, 
+            "-h": self.printHelp,
+            "-f": self.refreshJson, 
             "-i": self.printInfo,
             "-j": self.genJson, 
             "-l": self.printList,
@@ -43,20 +47,20 @@ class CliObj:
         if self.args[1] == "test":
             testName = self.args[4]
             utils.log("Generating test [" + testName + "] in collection [" + collectName + "]")
-            collections = self.gen.getCollections()
+            collections = self.tm.getCollections()
             if utils.getElemById(collections, collectName, "name") == "":
                 utils.log("Collection [" + collectName + "] not found. Generating new collection.")
-                self.gen.addCollection(self.configureCollection(collectName))
-            self.gen.addTest(utils.getElemById(collections, collectName, "name")["id"], self.configureTest(testName))
+                self.tm.addCollection(self.configureCollection(collectName))
+            self.tm.addTest(utils.getElemById(collections, collectName, "name")["id"], self.configureTest(testName))
         elif self.args[1] == "collection":
-            self.gen.addCollection(self.configureCollection(collectName))
+            self.tm.addCollection(self.configureCollection(collectName))
     
     def removeSingle(self, cmd):
         collectName = self.args[3]
         if self.args[1] == "test":
-            self.gen.removeTestByName(collectName, self.args[4]) 
+            self.tm.removeTestByName(collectName, self.args[4]) 
         elif self.args[1] == "collection":
-            self.gen.removeCollectionByName(collectName)
+            self.tm.removeCollectionByName(collectName)
 
     def configureTest(self, testName):
         utils.log("Configuring test [" + testName + "]")
@@ -81,13 +85,13 @@ class CliObj:
 
     def printList(self, cmd):
         if self.args[1] == "test":
-            collection = self.gen.getCollectionByName(self.args[3])
+            collection = self.tm.getCollectionByName(self.args[3])
             print("collection: " + utils.keyvalStr(collection["id"], collection["name"]))
             for test in collection["tests"]:
                 print("   test: " + utils.keyvalStr(test["id"], test["name"]))
         elif self.args[1] == "collection":
             print("All collections: ")
-            for coll in self.gen.getCollections():
+            for coll in self.tm.getCollections():
                 print("   collection: " + utils.keyvalStr(coll["id"], coll["name"]))
 
     def genJson(self):
@@ -107,20 +111,31 @@ class CliObj:
             cmd = self.args[1].lower()
             flag = self.args[2].lower()
             if utils.isValidArg(flag, self.flags, "flag") and utils.isValidArg(cmd, self.cmds, "command"):
-                self.gen = testgenerator.TestGenerator(utils.readJson("./config.dev.json"))
+                self.tm = testmanager.TestManager(utils.readJson("./config.json"))
                 self.getFuncDict()[flag](cmd)
         except IndexError:
-            if len(self.args) == 2 and self.args[1].lower() in ["-h","-i","-v"]:
+            if len(self.args) == 2 and self.args[1].lower() in ["-f","-h","-i","-v"]:
                 self.getFuncDict()[self.args[1].lower()]("")
             else:
                 utils.printCliError("Not enough arguments")
 
+
+import os
 def main():
-    args = sys.argv
-    if len(args) == 1:
-        args.append("-h")
-    cli = CliObj(args)
-    cli.processArgs()
+    #args = sys.argv
+    #if len(args) == 1:
+    #    args.append("-h")0
+    #cli = TestManagerCli(args)
+    #cli.processArgs()
+
+    # TODO make into utility
+    root = "../SQL-Unit-Tests"
+    collectionDirs = {}
+    for d in os.listdir(root):
+        collectionDirs[d] = []
+        for sd in os.listdir(os.path.join(root, d)):
+            collectionDirs[d].append(sd)
+    print(collectionDirs)
 
 
 if __name__=='__main__': main()

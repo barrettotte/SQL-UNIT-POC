@@ -14,7 +14,7 @@ A POC MSSQL unit testing framework with Python.
 | Directory/File        | Description                                |
 | --------------------- | -------------------------------------------|
 | SQL-Unit-Manager.json | The master data file / config for SQL-Unit | 
-| testgenerator/        | Generate new unit test stubs and unit test collections |
+| testmanager/          | Generate new unit test/collection stubs and configure test manager |
 
 
 ## Project Milestones
@@ -68,8 +68,6 @@ A POC MSSQL unit testing framework with Python.
 
 
 ## Future Ideas/Improvements
-* Test Generator - generate a test based off existing test
-* Test Generator - GUI with PyQt5
 * CI / CD using GitLab and Docker
 * Experimentation with DB2 SQL and UDFs
 * Deeper performance measurement

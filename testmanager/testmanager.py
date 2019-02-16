@@ -1,15 +1,18 @@
-# Generate Test Collections and Tests for SQL-Unit
+# Generate Test Collections/Tests and configure Test Manager
 
 import utils
 
-class TestGenerator:
+class TestManager:
 
     def __init__(self, config):
-        # TODO If exception in init, exit
-        self.config = config
-        self.testManagerJson = utils.readJson(config["test-manager"])
-        self.testCollections = self.testManagerJson["test-collections"]
-        utils.createFolderIne(config["test-folder"])
+        try:
+            self.config = config
+            self.testManagerJson = utils.readJson(config["test-manager"])
+            self.testCollections = self.testManagerJson["test-collections"]
+            utils.createFolderIne(config["test-folder"])
+        except Exception:
+            print("[FATAL] Test Manager could not be initialized.")
+            exit()
 
     def createTest(self, inputData, collection):
         sanitName = utils.sanitizeFilename(inputData["name"])
@@ -117,6 +120,10 @@ class TestGenerator:
             utils.regenerateIds(collection["tests"])
         utils.regenerateIds(self.testCollections)
         utils.writeJson(self.config["test-manager"], self.testManagerJson)
+        self.scanForNew()
+
+    def scanForNew(self):
+        testFolders = utils.getFoldersAsDict(self.config["test-folder"])
 
     def removeAllCollections(self):
         self.testCollections.clear()
@@ -129,5 +136,7 @@ class TestGenerator:
     def getCollections(self):
         return self.testCollections
 
+
 # TODO Handle duplicate naming/deleting for collections+tests
 # TODO Stats function for returning info on test/collection count
+# TODO Create any missing files/folders when refreshing

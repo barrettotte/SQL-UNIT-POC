@@ -10,10 +10,17 @@ def getCwd():
 
 
 def readJson(filePath):
-    # TODO file not found exception handling
-    with open(filePath, 'r') as jsonFile:
-        data = json.load(jsonFile)
+    try:
+        with open(filePath, 'r') as jsonFile:
+            data = json.load(jsonFile)
+    except FileNotFoundError:
+        fatalError("File [" + filePath + "] could not be found.")
     return data
+
+
+def fatalError(msg, writeFile=True):
+    log(msg, "FATAL", writeFile)
+    exit()
 
 
 def writeJson(filePath, data, sort=False):
@@ -21,13 +28,14 @@ def writeJson(filePath, data, sort=False):
 
 
 def writeFile(filePath, buffer):
-    # TODO exception handling
-    with open(filePath, 'w') as f:
-        f.write(buffer)
+    try:
+        with open(filePath, 'w') as f:
+            f.write(buffer)
+    except Exception:
+        log("File [" + filePath + "] could not be written.", "ERROR")
 
 
 def createFolderIne(folder):
-    # TODO handle duplicate directory names
     if not os.path.exists(folder):
         os.makedirs(folder)
 
@@ -72,10 +80,9 @@ def deleteDirectory(directoryPath):
 
 
 def printCliError(msg, showHelp=True):
-    out = "[ERROR] " + msg
     if showHelp:
-        out += " Use -h flag for more information."
-    print(out)
+        msg += " Use -h flag for more information."
+    log(msg, "ERROR", False)
 
 
 def isValidArg(arg, argList, key):
@@ -93,6 +100,7 @@ def printArgList(argList, keys, separator=" --- ", prefix="   "):
 
 def log(msg, msgType="INFO", writeFile=True):
     print("[" + msgType + "] " + msg)
+    #TODO write to file
 
 
 def makePrompt(basePrompt, choices, inType, spaces, default):
@@ -109,11 +117,11 @@ def getInputInt(x, inType):
     try:
         x = int(x)
         if "+" in inType and x < 0:
-            printCliError("Input must be a positive integer", showHelp=False)
+            log("Input must be a positive integer", "ERROR", False)
         else:
             return x
     except ValueError:
-        printCliError("Input must be an integer.", showHelp=False)
+        log("Input must be an integer.", "ERROR", False)
     return ""
 
 
@@ -134,7 +142,7 @@ def getInput(prompt, choices=[], inType="str", spaces=3, default=""):
                 inp = x
     except KeyboardInterrupt:
         print("")
-        printCliError("Keyboard interrupt occurred. Exiting program.", showHelp=False)
+        fatalError("Keyboard interrupt occurred.", False)
         exit()
     if inType == "bool":
         inp = "true" if inp.lower() == "y" else "false"
@@ -142,14 +150,13 @@ def getInput(prompt, choices=[], inType="str", spaces=3, default=""):
 
 
 def choiceIsValid(x, sList):
-   for s in sList:
-      if x.lower() == s.lower():
-        return True
-   printCliError("Input not valid, must be [" + "|".join(sList) + "]", showHelp=False)
-   return False
+    for s in sList:
+        if x.lower() == s.lower():
+            return True
+    log("Input not valid, must be [" + "|".join(sList) + "]", "ERROR", False)
+    return False
 
 
 # TODO util for searching/handling if file/dir is duplicate name
 # TODO util for simple log, print to console + write to text file
 # TODO util for getting timestamp - getTimestamp(formatSpecifier)
-# TODO util for handling duplicate names in list
