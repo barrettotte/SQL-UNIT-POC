@@ -1,10 +1,11 @@
 {
-    "test-manager": "../SQL-Unit-Manager.json",
-    "test-folder": "../SQL-Unit-Tests",
+    "test-manager": "./SQL-Unit-Manager.json",
+    "test-folder": "./SQL-Unit-Tests",
     "info": {
         "title": "SQL-Unit Test Manager CLI",
         "version": "1.0.0",
         "author": "Barrett Otte",
+        "contact": "barrettotte@gmail.com",
         "description": "CLI for generating unit tests/collections and configuring SQL-Unit test manager"
     },
     "commands":[
@@ -58,5 +59,15 @@
             "flag": "-x", 
             "desc": "[NOT IMPLEMENTED] Generate multiple unit tests with [xml file]"
         }
-    ]
+    ],
+    "collection-defaults": {
+        "server": "NULL",
+        "dialect": "MSSQL",
+        "keep-results": 25,
+        "fail-threshold": 0,
+        "measure-performance": "true",
+        "record-results": "true",
+        "generate-report": "true",
+        "allow-stored-procedures": "true"
+    }
 }

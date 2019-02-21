@@ -48,6 +48,22 @@
                     "description": "wasd"
                 }
             ]
+        },
+        {
+            "id": 2,
+            "name": "WASD",
+            "description": "WASD",
+            "config": {
+                "server": "NULL",
+                "dialect": "MSSQL",
+                "keep-results": 25,
+                "fail-threshold": 0,
+                "measure-performance": "true",
+                "record-results": "true",
+                "generate-report": "true",
+                "allow-stored-procedures": "true"
+            },
+            "tests": []
         }
     ]
 }

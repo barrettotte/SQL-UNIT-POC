@@ -8,7 +8,7 @@ class TestManager:
         try:
             self.config = config
             self.testManagerJson = utils.readJson(config["test-manager"])
-            self.testCollections = self.testManagerJson["test-collections"]
+            self.collections = self.testManagerJson["test-collections"]
             utils.createFolderIne(config["test-folder"])
         except Exception:
             print("[FATAL] Test Manager could not be initialized.")
@@ -24,7 +24,7 @@ class TestManager:
     
     def createCollection(self, inputData):
         return {
-            "id": utils.getIncrementedId(self.testCollections),
+            "id": utils.getIncrementedId(self.collections),
             "name": utils.sanitizeFilename(inputData["name"]),
             "description": inputData["description"],
             "config": inputData["config"],
@@ -42,7 +42,7 @@ class TestManager:
         utils.writeFile(testFolder + "/" + test["name"] + "-actual.json", "{}")
 
     def addTest(self, collectionId, inputData):
-        collection = utils.getElemById(self.testCollections, collectionId)
+        collection = utils.getElemById(self.collections, collectionId)
         test = self.createTest(inputData, collection)
         out = "Adding test " + utils.keyvalStr(test["id"], test["name"])
         utils.log(out + " to test collection " + utils.keyvalStr(collection["id"], collection["name"]))
@@ -53,11 +53,18 @@ class TestManager:
     def addCollection(self, inputData):
         collection = self.createCollection(inputData)
         utils.log("Adding collection " + utils.keyvalStr(collection["id"], collection["name"]))
-        self.testCollections.append(collection)
+        self.collections.append(collection)
         self.refreshJson()
+    
+    def getDefaultCollectionConfig(self, collectName):
+        return {
+            "name": collectName,
+            "description": collectName,
+            "config": self.config["collection-defaults"]
+        }
 
     def removeTestById(self, collectionId, testId):
-        collection = utils.getElemById(self.testCollections, collectionId)
+        collection = utils.getElemById(self.collections, collectionId)
         test = self.getTestById(collectionId, testId)
         if test != "":
             out = "Removing test " + utils.keyvalStr(test["id"], test["name"])
@@ -70,7 +77,7 @@ class TestManager:
         collection = self.getCollectionById(collectionId)
         if collection != "":
             utils.log("Removing collection " + utils.keyvalStr(collection["id"], collection["name"]))
-            self.testCollections.remove(collection)
+            self.collections.remove(collection)
             self.refreshJson()
             utils.deleteDirectory(self.config["test-folder"] + "/" + collection["name"])
     
@@ -93,13 +100,13 @@ class TestManager:
             utils.log("Collection [" + collectionName + "] not found.")
     
     def getCollectionById(self, collectionId):
-        return utils.getElemById(self.testCollections, collectionId)
+        return utils.getElemById(self.collections, collectionId)
     
     def getTestById(self, collectionId, testId):
         return utils.getElemById(self.getCollectionById(collectionId), testId)
 
     def getCollectionByName(self, collectionName):
-        collection = utils.getElemById(self.testCollections, collectionName, "name")
+        collection = utils.getElemById(self.collections, collectionName, "name")
         if collection != "":
             return collection
         else:
@@ -116,25 +123,46 @@ class TestManager:
                 utils.log("Test [" + testName + "] not found in collection [" + collectionName + "]")    
 
     def refreshJson(self):
-        for collection in self.testCollections:
+        for collection in self.collections:
             utils.regenerateIds(collection["tests"])
-        utils.regenerateIds(self.testCollections)
+        utils.regenerateIds(self.collections)
         utils.writeJson(self.config["test-manager"], self.testManagerJson)
-        self.scanForNew()
+        self.refreshCollections()
 
-    def scanForNew(self):
-        testFolders = utils.getFoldersAsDict(self.config["test-folder"])
+    def refreshCollections(self):
+        collectionFolders = utils.getFoldersAsDict(self.config["test-folder"])
+        names = self.getCollectionNames()
+        for key, val in collectionFolders.items():
+            if key in names:
+                print(key)
+            else:
+                self.addCollection(self.getDefaultCollectionConfig(key))
+        collectionsJson = self.testManagerJson["test-collections"]
+        for collection in collectionsJson:
+            print(collection)
+            # check if in JSON, but not a folder -- remove from JSON
+
+            # +-------------------------------------+
+            # | !!!!!!!! DEV STOPPED HERE !!!!!!!!! |
+            # +-------------------------------------+
+
 
     def removeAllCollections(self):
         self.testCollections.clear()
         self.refreshJson()
     
     def removeAllTests(self, collectionIdx):
-        utils.getElemById(self.testCollections, collectionIdx)["tests"].clear()
+        utils.getElemById(self.collections, collectionIdx)["tests"].clear()
         self.refreshJson()
 
     def getCollections(self):
         return self.testCollections
+    
+    def getCollectionNames(self):
+        names = []
+        for collection in self.collections:
+            names.append(collection["name"])
+        return names
 
 
 # TODO Handle duplicate naming/deleting for collections+tests

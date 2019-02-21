@@ -3,22 +3,8 @@
 A POC MSSQL unit testing framework with Python.
 
 
-(GitLab CI/CD status here)
-
-
-## TLDR;
-* ...
-
-
-## Repository Details
-| Directory/File        | Description                                |
-| --------------------- | -------------------------------------------|
-| SQL-Unit-Manager.json | The master data file / config for SQL-Unit | 
-| testmanager/          | Generate new unit test/collection stubs and configure test manager |
-
-
 ## Project Milestones
-- [x] Test generator backend / basic CLI
+- [x] Test generator backend / basic CLI (Scrapped in favor of a directory/file driven test framework)
 - [ ] Test framework foundations
 - [ ] Test runner basics
 - [ ] Tests with SQL and UDFs (MSSQL)
@@ -29,30 +15,6 @@ A POC MSSQL unit testing framework with Python.
 - [ ] Create basic Jenkins Job
 - [ ] Tests with Stored Procedures (MSSQL)
 - [ ] Generate formatted reports with HTML 
-
-
-## Creating new Unit Tests and Unit Test Collections
-* ...
-
-
-## Configuration
-* ...
-
-
-## Test Process
-* ...
-
-
-## Database Integration
-* ...
-
-
-## Reporting
-* ...
-
-
-## CI/CD Integration
-* ...
 
 
 ## Development Notes

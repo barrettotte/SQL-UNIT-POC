@@ -1,15 +1,17 @@
 # CLI for Test Manager
 
-import sys
+import os, sys
 import utils, testmanager
 
 class TestManagerCli:
     
-    def __init__(self, args):
+    def __init__(self, args, configpath):
+        if len(args) == 1: args.append("-h")
         self.args = args
-        self.helpData = utils.readJson("./config.json")
-        self.cmds = self.helpData["commands"]
-        self.flags = self.helpData["flags"]
+        self.config = utils.readJson(configpath)
+        self.cmds = self.config["commands"]
+        self.flags = self.config["flags"]
+        self.tm = testmanager.TestManager(self.config)
 
     def printHelp(self, cmd):
         print("FORMAT ->  [COMMAND] [FLAG] [ARG1] ... [ARGN]")
@@ -19,14 +21,18 @@ class TestManagerCli:
         utils.printArgList(self.flags, ["flag","desc"])
 
     def printInfo(self, cmd):
-        info = self.helpData["info"]
+        info = self.config["info"]
         for i in info: print(i + ": " + info[i])
 
     def printVersion(self, cmd):
-        print("version: " + self.helpData["info"]["version"])
+        print("version: " + self.config["info"]["version"])
 
     def refreshJson(self, cmd):
         self.tm.refreshJson()
+    
+    def debugFunc(self, cmd):
+        utils.log("Debug function called")
+        self.tm.refreshCollections()
 
     def getFuncDict(self):
         return {
@@ -39,7 +45,8 @@ class TestManagerCli:
             "-s": self.genSingle, 
             "-t": self.genText, 
             "-v": self.printVersion,
-            "-x": self.genXml
+            "-x": self.genXml,
+            "-debug": self.debugFunc
         }
 
     def genSingle(self, cmd):
@@ -68,18 +75,19 @@ class TestManagerCli:
     
     def configureCollection(self, collectName):
         utils.log("Configuring collection [" + collectName + "]")
+        defaults = self.tm.getDefaultCollectionConfig(collectName)
         return {
             "name": collectName,
             "description": utils.getInput("Collection description", default=collectName),
-            "config": {
-                "server": utils.getInput("Server Name"),
-                "dialect": utils.getInput("SQL Dialect", choices=["MSSQL","DB2"], default="MSSQL"),
-                "keep-results": utils.getInput("Result sets to store", inType="int+", default=25),
-                "fail-threshold": utils.getInput("Fail threshold", inType="int+", default=0),
-                "measure-performance": utils.getInput("Measure Performance?", inType="bool", default="Y"),
-                "record-results": utils.getInput("Record Results?", inType="bool", default="Y"),
-                "generate-report": utils.getInput("Generate Reports?", inType="bool", default="Y"),
-                "allow-stored-procedures": utils.getInput("Allow Stored Procedures?", inType="bool", default="Y")
+            "config": { # TODO Can this be looped over ?
+                "server": utils.getInput("Server Name", default=defaults["server"]),
+                "dialect": utils.getInput("SQL Dialect", choices=["MSSQL","DB2"], default=defaults["dialect"]),
+                "keep-results": utils.getInput("Result sets to store", inType="int+", default=defaults["keep-results"]),
+                "fail-threshold": utils.getInput("Fail threshold", inType="int+", default=defaults["fail-threshold"]),
+                "measure-performance": utils.getInput("Measure Performance?", inType="bool", default=defaults["measure-performance"]),
+                "record-results": utils.getInput("Record Results?", inType="bool", default=defaults["record-results"]),
+                "generate-report": utils.getInput("Generate Reports?", inType="bool", default=defaults["generate-report"]),
+                "allow-stored-procedures": utils.getInput("Allow Stored Procedures?", inType="bool", default=defaults["allow-stored-procedures"])
             }
         }
 
@@ -111,31 +119,16 @@ class TestManagerCli:
             cmd = self.args[1].lower()
             flag = self.args[2].lower()
             if utils.isValidArg(flag, self.flags, "flag") and utils.isValidArg(cmd, self.cmds, "command"):
-                self.tm = testmanager.TestManager(utils.readJson("./config.json"))
+                self.tm.refreshJson()
                 self.getFuncDict()[flag](cmd)
         except IndexError:
-            if len(self.args) == 2 and self.args[1].lower() in ["-f","-h","-i","-v"]:
+            if len(self.args) == 2 and self.args[1].lower() in ["-f","-h","-i","-v", "-debug"]:
                 self.getFuncDict()[self.args[1].lower()]("")
             else:
                 utils.printCliError("Not enough arguments")
 
-
-import os
 def main():
-    #args = sys.argv
-    #if len(args) == 1:
-    #    args.append("-h")0
-    #cli = TestManagerCli(args)
-    #cli.processArgs()
-
-    # TODO make into utility
-    root = "../SQL-Unit-Tests"
-    collectionDirs = {}
-    for d in os.listdir(root):
-        collectionDirs[d] = []
-        for sd in os.listdir(os.path.join(root, d)):
-            collectionDirs[d].append(sd)
-    print(collectionDirs)
+    TestManagerCli(sys.argv, "./config.json").processArgs()
 
 
 if __name__=='__main__': main()

@@ -1,5 +1,9 @@
 {
-    "python.linting.enabled": true,
-    "python.linting.pylintEnabled": true,
-    "python.pythonPath": "C:\\Users\\Barrett\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe"
+    "python.linting.enabled": false,
+    "python.linting.pylintEnabled": false,
+    "python.pythonPath": "C:\\Users\\Barrett\\AppData\\Local\\Programs\\Python\\Python36-32\\python.exe",
+    "python.analysis.disabled": [
+        "unresolved-import",
+        "use-before-def"
+    ]
 }
