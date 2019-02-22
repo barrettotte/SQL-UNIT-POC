@@ -1,0 +1,8 @@
+[INFO 2019-02-22 12:05:53.220660]  [INFO 2019-02-22 12:05:53.220162]  Test Runner initialized with target collection [WASD]
+[INFO 2019-02-22 12:05:53.220162]  Test Runner initialized with target collection [WASD]
+[INFO 2019-02-22 12:05:53.223657]  Creating database connection
+[INFO 2019-02-22 12:05:53.225155]  Loading test files
+[INFO 2019-02-22 12:05:53.228148]  Found 3 collection(s)
+[INFO 2019-02-22 12:05:53.231148]  Running collection [WASD] with 1 test(s)
+[INFO 2019-02-22 12:05:53.232141]  Running test [another_test] (1 of 1)
+[INFO 2019-02-22 12:05:53.233640]  Test Runner finished.
