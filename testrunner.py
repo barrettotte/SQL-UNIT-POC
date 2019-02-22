@@ -43,7 +43,7 @@ def main():
     runner = TestRunner(utils.readJson(utils.getCwd() + "\\config.json"))
     collectionName = "WASD" # TODO shell script passing set name
     runner.before(collectionName)
-    #runner.run()
-    #runner.after()
+    runner.run()
+    runner.after()
 
 if __name__=='__main__': main()
