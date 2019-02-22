@@ -57,7 +57,10 @@ class TestRunner():
             # TODO Execute SQL in wrapper function
 
 
-    def after(self):
-        utils.log("Test Runner finished.")
-        # TODO Evaluate test results
+def main():
+    runner = TestRunner(utils.readJson(utils.getCwd() + "\\config.json"))
+    collectionName = "WASD" # TODO shell script passing set name
+    runner.before(collectionName)
+    runner.run()
+    runner.after()
 
