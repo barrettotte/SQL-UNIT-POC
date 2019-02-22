@@ -20,7 +20,7 @@ A POC MSSQL unit testing framework with Python.
 ## Development Notes
 * Virtual Environment
   * Install ```pip install virtualenv```
-  * Init ```cd ./projectfolder && virtualenv venv```
+  * Init ```cd .\projectfolder && virtualenv venv```
   * Enter ```venv\Scripts\activate```
   * Exit ```deactivate```
 
