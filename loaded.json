@@ -1,0 +1,82 @@
+[
+    {
+        "name": "demo-collection",
+        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\demo-collection\\",
+        "config": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\demo-collection\\demo-collection.config.json",
+        "tests": [
+            {
+                "name": "sometest_DEMO",
+                "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\demo-collection\\sometest_DEMO\\",
+                "files": [
+                    {
+                        "name": "sometest_DEMO-actual.json",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\demo-collection\\sometest_DEMO\\sometest_DEMO-actual.json"
+                    },
+                    {
+                        "name": "sometest_DEMO-expected.json",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\demo-collection\\sometest_DEMO\\sometest_DEMO-expected.json"
+                    },
+                    {
+                        "name": "sometest_DEMO.sql",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\demo-collection\\sometest_DEMO\\sometest_DEMO.sql"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "testcoll123",
+        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\testcoll123\\",
+        "config": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\testcoll123\\testcoll123.config.json",
+        "tests": [
+            {
+                "name": "wasd",
+                "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\testcoll123\\wasd\\",
+                "files": [
+                    {
+                        "name": "wasd-actual.json",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\testcoll123\\wasd\\wasd-actual.json"
+                    },
+                    {
+                        "name": "wasd-expected.json",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\testcoll123\\wasd\\wasd-expected.json"
+                    },
+                    {
+                        "name": "wasd.sql",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\testcoll123\\wasd\\wasd.sql"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "WASD",
+        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\WASD\\",
+        "config": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\WASD\\WASD.config.json",
+        "tests": [
+            {
+                "name": "another_test",
+                "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\WASD\\another_test\\",
+                "files": [
+                    {
+                        "name": "another_test-actual.json",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\WASD\\another_test\\another_test-actual.json"
+                    },
+                    {
+                        "name": "another_test-expected.json",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\WASD\\another_test\\another_test-expected.json"
+                    },
+                    {
+                        "name": "another_test.sql",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\WASD\\another_test\\another_test.sql"
+                    }
+                ]
+            },
+            {
+                "name": "asdasd",
+                "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\WASD\\asdasd\\",
+                "files": []
+            }
+        ]
+    }
+]

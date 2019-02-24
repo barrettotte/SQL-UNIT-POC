@@ -1,31 +1,74 @@
-# Runs all tests located in test folder
-
 import pyodbc, utils
 from glob import glob
 
 
-class TestRunner():
+class SQLTestRunner():
     
 
     def __init__(self, config, target):
-        utils.log("Test Runner initialized with target collection [" + target + "]", init=True)
+        utils.log("SQL Test Runner initializing", init=True)
+        # TODO exception handling for collections path
         self.config = config
-        # TODO make collectionsPath absolute, folder find try/except
         self.collectionsPath = utils.getCwd() + "\\" + config["test-collections"]
-        self.targetCollection = target
+        self.target = target
+        self.currentDbConfig = {}
         self.testResults = []
 
 
-    # Gather all test-collection folders, test folders, and test files
-    def before(self):
-        utils.log("Creating database connection")
-        ## TODO Create/Configure DB Connection
-        utils.log("Loading test files")
+    def execute(self):
+        self.setUp()
+        self.run()
+        self.tearDown()
 
-        # TODO Make this more pythonic, quad for loop? in python? seriously?
-        self.collections = {"collections": []}
-        for folder in glob(self.collectionsPath + "\\*\\"):
-            collection = {"name": utils.getSplitLast(folder, "\\", 1), "path": folder, "tests": []}
+
+    def setUp(self):
+        utils.log("SQL Test Runner using directory [" + self.collectionsPath + "]")
+        utils.createFolderIne(self.collectionsPath)
+        self.collections = self.loadCollections(self.collectionsPath) # Not optimal loading all, but its POC
+        self.targetCollection = utils.getElemByKey(self.target, "name", self.collections)
+        utils.log("SQL Test Runner targeted with collection [" + self.targetCollection["name"] + "]")
+        self.connection = pyodbc.connect(self.getConnectDetails())
+
+
+    def run(self):
+        if self.targetCollection:
+            testLen = len(self.targetCollection["tests"])
+            utils.log("Running collection [" + self.targetCollection["name"] + "] with " + str(testLen) + " test(s)")
+            idx = 1
+            for test in self.targetCollection["tests"]:
+                utils.log("Running test " + ("[" + test["name"] + "] ").ljust(30) + "(" + str(idx) + " of " + str(testLen) + ")", pref=" "*3)
+                idx += 1
+                sqlDef = utils.getElemByKey(test["name"] + ".sql", "name", test["files"])
+                if sqlDef:
+                    utils.log("Reading [" + sqlDef["name"] + "]", pref=" "*6)
+                    sql = "".join(utils.readFile(sqlDef["path"]))
+                    utils.log("Executing [" + sqlDef["name"] + "]", pref=" "*6)
+                    cursor = self.connection.cursor().execute(getWrappedSql(sql))
+                    for row in cursor.fetchall():
+                        print(row)
+        else:
+            utils.log("Test collection [" + self.targetCollection["name"] + "] could not be found.", "ERROR")
+
+
+    def tearDown(self):
+        utils.log("SQL Test Runner finished")
+
+
+    def getWrappedSQl(self, sql):
+        dialect = self.currentDbConfig["dialect"]
+        if dialect == "MSSQL":
+            prefix = ""
+        else:
+            utils.fatalError("Dialect for [" + dialect + "] not supported.")
+
+
+    def loadCollections(self, path):
+        utils.log("Loading all test files")
+        colls = []
+        # TODO Make this pythonic. quad for loop? in python? seriously? do you know how to code?
+        for folder in glob(path + "\\*\\"):
+            collName = utils.getSplitLast(folder, "\\", 1)
+            collection = {"name": collName, "path": folder, "config": folder + collName + ".config.json", "tests": []}
             for testFolder in glob(folder + "*\\"):
                 test = {"name": utils.getSplitLast(testFolder, "\\", 1), "path": testFolder, "files": []}
                 collection["tests"].append(test)
@@ -33,34 +76,20 @@ class TestRunner():
                     filename = utils.getSplitLast(file, "\\")
                     for target in [".sql", "-expected.json", "-actual.json", "-config.json"]:
                         if filename == utils.getSplitLast(test["path"], "\\", 1) + target:
-                            #utils.log("Found " + test["path"] +  filename)
                             test["files"].append({"name": filename, "path": file})
-            self.collections["collections"].append(collection)
-        utils.log("Found " + str(len(self.collections["collections"])) + " collection(s)")
-        utils.writeJson("./loaded-tests.json", self.collections)
+            colls.append(collection)
+        utils.log("Found " + str(len(colls)) + " collection(s) in [" + path + "]")
+        utils.writeJson("./loaded.json", colls)
+        return colls
+    
 
-
-    def run(self):
-        collection = utils.findDictInList(self.collections["collections"], self.targetCollection, "name")
-        testLen = len(collection["tests"])
-        utils.log("Running collection [" + self.targetCollection + "] with " + str(testLen) + " test(s)")
-
-        #print(utils.getPrettyJson(self.collections)) #TODO debug remove
-        #print(utils.getPrettyJson(collection)) #TODO debug remove
-        idx = 1
-        for test in collection["tests"]:
-            utils.log("Running test [" + test["name"] + "] " + "(" + str(idx) + " of " + str(testLen) + ")")
-            idx += 1
-            #for file in test["files"]:
-            #    print("   " + file["name"])
-
-            # TODO Execute SQL in wrapper function
-
-
-def main():
-    runner = TestRunner(utils.readJson(utils.getCwd() + "\\config.json"))
-    collectionName = "WASD" # TODO shell script passing set name
-    runner.before(collectionName)
-    runner.run()
-    runner.after()
-
+    def getConnectDetails(self, dbConfig):
+        dbConfig = utils.readJson(self.targetCollection["config"])["database-config"]
+        utils.log("Creating database connection to [" + dbConfig["server"] + "\\" + dbConfig["database"] + "]")
+        self.currentDbConfig = dbConfig
+        return (";".join([
+            "DRIVER={ODBC Driver 13 for SQL Server}",
+            "SERVER=" + dbConfig["server"],
+            "DATABASE=" + dbConfig["database"],
+            "Trusted_Connection=yes"
+        ])) + ";"

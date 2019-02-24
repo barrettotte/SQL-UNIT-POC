@@ -16,18 +16,24 @@ A POC MSSQL unit testing framework with Python.
 - [ ] Tests with Stored Procedures (MSSQL)
 - [ ] Generate formatted reports with HTML 
 
-
 ## Development Notes
 * Virtual Environment
   * Install ```pip install virtualenv```
   * Init ```cd .\projectfolder && virtualenv venv```
   * Enter ```venv\Scripts\activate```
   * Exit ```deactivate```
-
+* Example database to kick around
+  * https://github.com/Microsoft/sql-server-samples/
+  * Download AdventureWorks2017.bak and place in C:/.../Microsoft SQL Server/.../MSSQL/Backup/
+  * Launch MSSMS > right click server > restore database > device > add AdventureWorks2017.bak
 
 ## References
-* ...
-
+* Use SQL Server 2017 in Docker containers for your CI/CD process https://www.youtube.com/watch?v=HkWwaOG3aSw
+* Designed basic SQL tests around these:
+  * http://www.sqlservertutorial.net/sql-server-basics/
+  * https://goalkicker.com/MicrosoftSQLServerBook/
+* https://docs.microsoft.com/en-us/sql/?view=sql-server-2017
+* https://dba.stackexchange.com/questions/82681/how-to-rollback-when-3-stored-procedures-are-started-from-one-stored-procedure/82697#82697
 
 ## Future Ideas/Improvements
 * CI / CD using GitLab and Docker

@@ -1,0 +1,7 @@
+{
+    "database-config": {
+        "server": "BARRETT-MAIN\\BARRETTSQL",
+        "database": "BARRETT_TEST",
+        "dialect": "MSSQL"
+    }    
+}

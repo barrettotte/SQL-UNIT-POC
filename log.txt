@@ -1,8 +1,12 @@
-[INFO 2019-02-22 12:05:53.220660]  [INFO 2019-02-22 12:05:53.220162]  Test Runner initialized with target collection [WASD]
-[INFO 2019-02-22 12:05:53.220162]  Test Runner initialized with target collection [WASD]
-[INFO 2019-02-22 12:05:53.223657]  Creating database connection
-[INFO 2019-02-22 12:05:53.225155]  Loading test files
-[INFO 2019-02-22 12:05:53.228148]  Found 3 collection(s)
-[INFO 2019-02-22 12:05:53.231148]  Running collection [WASD] with 1 test(s)
-[INFO 2019-02-22 12:05:53.232141]  Running test [another_test] (1 of 1)
-[INFO 2019-02-22 12:05:53.233640]  Test Runner finished.
+[INFO  2019-02-23 12:12:19.049426] SQL Test Runner initializing
+[INFO  2019-02-23 12:12:19.053411] SQL Test Runner using directory [D:\Programming\SQL-UNIT-POC\SQL-Unit-Tests\]
+[INFO  2019-02-23 12:12:19.056381] Loading all test files
+[INFO  2019-02-23 12:12:19.060396] Found 3 collection(s) in [D:\Programming\SQL-UNIT-POC\SQL-Unit-Tests\]
+[INFO  2019-02-23 12:12:19.065356] SQL Test Runner targeted with collection [WASD]
+[INFO  2019-02-23 12:12:19.068348] Creating database connection to [BARRETT-MAIN\BARRETTSQL\BARRETT_TEST]
+[INFO  2019-02-23 12:12:19.101260] Running collection [WASD] with 2 test(s)
+[INFO  2019-02-23 12:12:19.110236]    Running test [another_test]                (1 of 2)
+[INFO  2019-02-23 12:12:19.113258]       Reading [another_test.sql]
+[INFO  2019-02-23 12:12:19.117217]       Executing [another_test.sql]
+[INFO  2019-02-23 12:12:19.121217]    Running test [asdasd]                      (2 of 2)
+[INFO  2019-02-23 12:12:19.125198] SQL Test Runner finished
