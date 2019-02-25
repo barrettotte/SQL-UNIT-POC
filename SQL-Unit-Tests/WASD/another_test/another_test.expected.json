@@ -1,0 +1,24 @@
+{
+    "columns": [
+        {
+            "name": "role_name",
+            "type": "VARCHAR(50)"
+        }
+    ],
+    "row-count": 10,
+    "success": "true",
+    "result-set": [
+        {
+            "id": 1,
+            "role_name": "ROLE_USER"
+        },
+        {
+            "id": 2,
+            "role_name": "ROLE_ADMIN"
+        },
+        {
+            "id": 3,
+            "role_name": "ROLE_DEVELOPER"
+        }
+    ]
+}

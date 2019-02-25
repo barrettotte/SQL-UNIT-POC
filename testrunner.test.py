@@ -11,27 +11,27 @@ class BasicTest(unittest.TestCase):
         addFiles = [".sql", "-expected.json", "-actual.json"]
         self.config = utils.readJson("..\\_configs\\SQL-UNIT-POC-Config.json")
         self.runner = SQLTestRunner(self.config, self.target)
-        self.setupMockCollection(addTests, addFiles)
+        self.setupMockSuite(addTests, addFiles)
 
-    def setupMockCollection(self, addTests, addFiles):
-        self.rootFolder = utils.getCwd() + "\\" + self.config["test-collections"]
-        self.mockCollectionPath = self.rootFolder + "\\" + self.target
+    def setupMockSuite(self, addTests, addFiles):
+        self.rootFolder = utils.getCwd() + "\\" + self.config["test-suites"]
+        self.mockSuitePath = self.rootFolder + "\\" + self.target
         self.testPaths = {}
         for test in addTests:
-            self.testPaths[test] = self.mockCollectionPath + "\\" + test
+            self.testPaths[test] = self.mockSuitePath + "\\" + test
             utils.createFolderIne(self.testPaths[test])
             for file in addFiles:
                 utils.writeFile(self.testPaths[test] + "\\" + test + file, "")
     
     def test_init(self):
         self.assertIsInstance(self.runner, SQLTestRunner)
-        self.assertTrue(os.path.exists(self.mockCollectionPath))
-        self.assertEqual(3, len(os.listdir(self.mockCollectionPath))) # 3 tests in collection
+        self.assertTrue(os.path.exists(self.mockSuitePath))
+        self.assertEqual(3, len(os.listdir(self.mockSuitePath))) # 3 tests in suite
         for tp in self.testPaths:
-            self.assertEqual(3, len(os.listdir(self.mockCollectionPath + "\\" + tp))) # 3 files / test
+            self.assertEqual(3, len(os.listdir(self.mockSuitePath + "\\" + tp))) # 3 files / test
     
     def tearDown(self):
-        shutil.rmtree(self.mockCollectionPath)
+        shutil.rmtree(self.mockSuitePath)
 
 def suite():
     suite = unittest.TestSuite()

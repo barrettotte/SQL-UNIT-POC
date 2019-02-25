@@ -1,18 +1,6 @@
 -- Initialize my testing database --
 
 
--- Configure to allow for open query --
-sp_configure 'Show Advanced Options', 1
-GO
-RECONFIGURE
-GO
-
-sp_configure 'Ad Hoc Distributed Queries', 1
-GO
-RECONFIGURE
-GO
-
-
 -- Create BARRETT_TEST database --
 BEGIN
     PRINT N'Creating BARRETT_TEST database...'
@@ -82,54 +70,6 @@ BEGIN
     ELSE
         PRINT N'user_roles table already exists.';   
 END
-
-
-SELECT * FROM [BARRETT_TEST].INFORMATION_SCHEMA.routines 
-    WHERE ROUTINE_TYPE = 'PROCEDURE' AND ROUTINE_NAME = 'SQLUnit_Runner'
-
-
--- Create stored procedure --
-USE [BARRETT_TEST];
-GO
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-
-BEGIN
-    IF NOT EXISTS (SELECT * FROM [BARRETT_TEST].INFORMATION_SCHEMA.routines 
-        WHERE ROUTINE_TYPE = 'PROCEDURE' AND ROUTINE_NAME = 'SQLUnit_Runner' 
-    )
-    BEGIN
-        CREATE PROCEDURE [dbo].[SQLUnit_Runner]
-        (
-            @sql_input NVARCHAR(max),
-            @results NVARCHAR(max)
-        )
-        AS
-        BEGIN
-            BEGIN TRANSACTION SqlUnitWrapper
-                SAVE TRANSACTION SqlUnitSave
-                SET @results = NULL
-                BEGIN TRY
-                    EXEC (@sql_input)
-                END TRY
-                BEGIN CATCH
-                    SELECT 
-                        ERROR_NUMBER() AS ErrorNumber,
-                        ERROR_SEVERITY() AS ErrorSeverity,
-                        ERROR_STATE() AS ErrorState,
-                        ERROR_PROCEDURE() AS ErrorProcedure,
-                        ERROR_LINE() AS ErrorLine,
-                        ERROR_MESSAGE() AS ErrorMessage;
-                    IF @@TRANCOUNT > 0
-                        ROLLBACK TRANSACTION SqlUnitSave;
-                END CATCH
-            ROLLBACK TRANSACTION SqlUnitWrapper   
-        END
-    END
-END
-GO
 
 
 -- Display created tables in BARRETT_TEST

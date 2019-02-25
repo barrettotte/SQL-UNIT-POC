@@ -5,7 +5,7 @@ from testrunner import SQLTestRunner
 
 def main():
     args = sys.argv
-    # TODO Pass in config
+    # TODO Pass in config path
     if len(args) == 2:
         configPath = utils.readJson("..\\_configs\\SQL-UNIT-POC-Config.json")
         SQLTestRunner(configPath, args[1]).execute()

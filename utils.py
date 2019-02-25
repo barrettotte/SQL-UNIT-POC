@@ -38,16 +38,14 @@ def writeFile(path, buffer):
 
 def log(msg, msgType="INFO", path=".\\log.txt", writeFile=True, init=False, pref=""):
     msg = "[" + msgType.ljust(6) + getTimestamp() + "] " + pref + msg
-    #try:
-    if 1==1:
-        if init: 
-            if os.path.exists(path):
-                os.remove(path)
+    try:
+        if init and os.path.exists(path): 
+            os.remove(path)
         with open(path, "a+") as f:
             f.write(msg + "\n")
-    #except Exception as e:
-        #print("[ERROR] Could not write to log")
-    #    print(e)
+    except Exception as e:
+        print("[ERROR] Could not write to log")
+        print(e)
     print(msg)
     
 def fatalError(msg, writeFile=True):

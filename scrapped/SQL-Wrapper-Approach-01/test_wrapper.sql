@@ -1,0 +1,66 @@
+-- SQL-Unit wrapper for executing SQL string within a T-SQL transaction --
+
+USE [BARRETT_TEST];
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+BEGIN TRY
+	DECLARE @TMP_DB AS VARCHAR(50) = 'BARRETT_TEST';
+    DECLARE @TMP_SCHEMA AS VARCHAR(50) = 'dbo';
+    DECLARE @TMP_LOC AS VARCHAR(160) = '[' + @TMP_DB + '].[' + @TMP_SCHEMA + '].[SQLUnit_TMP]';
+
+	DECLARE @SQL_STRING AS NVARCHAR(MAX) = N'';
+	-- SET @SQL_STRING = 'SELECT * FROM [BARRETT_TEST].[dbo].[roles]'; -- WORKS
+	SET @SQL_STRING = 'INSERT INTO [BARRETT_TEST].[dbo].[roles] (role_name) VALUES (''TEST''); SELECT * FROM [BARRETT_TEST].[dbo].[roles];';
+	SET @SQL_STRING = REPLACE(@SQL_STRING, CHAR(39), CHAR(39) + CHAR(39));
+
+	IF OBJECT_ID(@TMP_LOC, 'U') IS NOT NULL 
+		EXEC('DROP TABLE ' + @TMP_LOC);
+			
+	DECLARE @QRY_RES NVARCHAR(MAX) = N'';
+    DECLARE @QRY_INS NVARCHAR(MAX) = N'';
+
+	EXEC('CREATE TABLE ' + @TMP_LOC + ' (result XML)');
+    SET @QRY_RES = N'EXEC(''(' + @SQL_STRING + ') FOR XML PATH(''''row''''), ROOT(''''results''''), TYPE'');';
+	SELECT @QRY_RES = REPLACE(@QRY_RES, CHAR(39), CHAR(39) + CHAR(39));
+
+	SELECT @QRY_INS = 'INSERT ' + @TMP_LOC + ' EXEC('' ' + @QRY_RES + ' '' )';
+	SELECT @QRY_INS = REPLACE(@QRY_INS, CHAR(39), CHAR(39) + CHAR(39));
+
+	--SELECT @QRY_INS = @QRY_INS + @QRY_RES + ''')';
+	PRINT 'SQL_STRING : ' + 'EXEC(' + CHAR(39) + @SQL_STRING + CHAR(39) + ')';
+	PRINT 'QRY_RES :    ' + 'EXEC(' + CHAR(39) + @QRY_RES + CHAR(39) + ')';
+	PRINT 'QRY_INS :    ' + 'EXEC(' + CHAR(39) + @QRY_INS + CHAR(39) + ')';
+
+	EXEC(@QRY_INS);
+	EXEC('SELECT 1 FROM ' + @TMP_LOC);
+	EXEC('DROP TABLE ' + @TMP_LOC);
+
+
+    -- DEBUG OUTPUT --
+	/*
+	EXEC('INSERT INTO [BARRETT_TEST].[dbo].[roles] (role_name) VALUES (''TEST''); SELECT * FROM [BARRETT_TEST].[dbo].[roles];') --PASSED
+	EXEC('EXEC(''(INSERT INTO [BARRETT_TEST].[dbo].[roles] (role_name) VALUES (''''TEST''''); SELECT * FROM [BARRETT_TEST].[dbo].[roles];) FOR XML PATH(''''row''''), ROOT(''''results''''), TYPE'');')
+    */
+
+	DELETE FROM [BARRETT_TEST].[dbo].[roles] WHERE role_name = 'TEST'
+END TRY
+BEGIN CATCH
+    SELECT
+		@SQL_STRING AS SQL_STRING,
+		@QRY_RES AS QUERY_RESULT,
+		@QRY_INS AS QUERY_INSERT,
+		ERROR_NUMBER() AS ErrorNumber,
+		ERROR_SEVERITY() AS ErrorSeverity,
+		ERROR_STATE() AS ErrorState,
+		ERROR_PROCEDURE() AS ErrorProcedure,
+		ERROR_LINE() AS ErrorLine,
+		ERROR_MESSAGE() AS ErrorMessage;
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION
+END CATCH

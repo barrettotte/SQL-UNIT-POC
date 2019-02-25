@@ -14,3 +14,12 @@ INSERT INTO [BARRETT_TEST].[dbo].[users](first_name, last_name, username) VALUES
 
 SELECT * FROM [BARRETT_TEST].INFORMATION_SCHEMA.routines 
     WHERE ROUTINE_TYPE = 'PROCEDURE'
+
+
+INSERT [BARRETT_TEST].[dbo].[SQLUnit_TMP] EXEC(' EXEC(''(SELECT * FROM [BARRETT_TEST].[dbo].[users]) FOR XML AUTO, TYPE'')' )
+INSERT [BARRETT_TEST].[dbo].[SQLUnit_TMP] EXEC(' EXEC(''(SELECT * FROM [BARRETT_TEST].[dbo].[users]) FOR XML AUTO, TYPE'')' )
+INSERT [BARRETT_TEST].[dbo].[SQLUnit_TMP] EXEC(' EXEC(''''''''(SELECT * FROM [BARRETT_TEST].[dbo].[users]) FOR XML AUTO, TYPE'''''''')' )
+INSERT [BARRETT_TEST].[dbo].[SQLUnit_TMP] EXEC(' EXEC(''(DECLARE @TB AS VARCHAR(25) = ''''users''''; EXEC(''''SELECT * FROM [BARRETT_TEST].[dbo].['''' + @TB + '''']'''');) FOR XML AUTO, TYPE'')' )
+
+
+
