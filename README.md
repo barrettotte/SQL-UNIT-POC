@@ -32,8 +32,8 @@ A very basic POC MSSQL unit testing framework using Python and T-SQL.
 - [x] Test generator backend / basic CLI (Scrapped in favor of a directory/file driven test framework)
 - [x] Test framework foundations
 - [x] Test runner basics
-- [ ] SQL-Unit wrapper Stored Procedure
-- [ ] Testing with basic SQL
+- [x] SQL-Unit wrapper Stored Procedure
+- [x] Testing with basic SQL
 - [ ] Test evaluation expected vs actual functionality
 - [ ] Testing with more advanced SQL and UDFs
 - [ ] Testing with Stored Procedures

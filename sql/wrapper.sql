@@ -1,0 +1,66 @@
+-- SQL-Unit wrapper for executing SQL string within a T-SQL transaction --
+
+USE [BARRETT_TEST];
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+BEGIN
+	SET NOCOUNT ON
+
+	-- TODO : Pass as params -- 
+	DECLARE @SQL_STRING AS NVARCHAR(MAX) = N'';
+	DECLARE @RES_COLS AS NVARCHAR(MAX) = N'';
+	SET @SQL_STRING = N'INSERT INTO [BARRETT_TEST].[dbo].[roles] (role_name) VALUES (&!SQ!&TEST&!SQ!&); SELECT * FROM [BARRETT_TEST].[dbo].[roles];';
+	SET @RES_COLS = N'id VARCHAR(50)|,|result VARCHAR(50)|,|';
+
+
+	DECLARE @POS INT = 0;
+	DECLARE @LEN INT = 0;
+	DECLARE @VAL VARCHAR(2000);
+	DECLARE @DELIM_COL VARCHAR(3) = '|,|';
+
+
+	-- Dynamically create temp table from expected columns --
+	IF OBJECT_ID('tempdb..#TMP') IS NOT NULL 
+		DROP TABLE #TMP;
+	CREATE TABLE #TMP(__IGNORE__ INT);
+	WHILE CHARINDEX(@DELIM_COL, @RES_COLS, @POS + 1) > 0 
+	BEGIN
+		SET @LEN = CHARINDEX(@DELIM_COL, @RES_COLS, @POS + 1) - @POS;
+		SET @VAL = SUBSTRING(@RES_COLS, @POS, @LEN);
+		EXEC('ALTER TABLE #TMP ADD ' + @VAL);
+		SET @POS = CHARINDEX(@DELIM_COL, @RES_COLS, @POS + @LEN) + LEN(@DELIM_COL);
+	END
+	EXEC('ALTER TABLE #TMP DROP COLUMN __IGNORE__');
+	
+
+	-- Execute injected SQL and select result set --
+	BEGIN TRANSACTION SQLUnit_Wrapper
+		SAVE TRANSACTION SQLUnit_Wrapper
+		BEGIN TRY
+			SET @SQL_STRING = REPLACE(@SQL_STRING, '&!SQ!&', CHAR(39));
+			EXEC('CREATE OR ALTER PROCEDURE [dbo].[SQLUnit_TmpSP] AS ' + @SQL_STRING);
+			INSERT INTO #TMP EXEC [dbo].[SQLUnit_TmpSP];
+			SELECT * FROM #TMP;
+			EXEC('DROP PROCEDURE [dbo].[SQLUnit_TmpSP]');
+			DROP TABLE #TMP;
+		END TRY
+		BEGIN CATCH
+			SELECT
+				@SQL_STRING AS SQL_STRING,
+				@RES_COLS AS RES_COLS,
+				@DELIM_COL AS DELIM_COL,
+				ERROR_NUMBER() AS ErrorNumber,
+				ERROR_SEVERITY() AS ErrorSeverity,
+				ERROR_STATE() AS ErrorState,
+				ERROR_PROCEDURE() AS ErrorProcedure,
+				ERROR_LINE() AS ErrorLine,
+				ERROR_MESSAGE() AS ErrorMessage;
+			IF @@TRANCOUNT > 0
+				ROLLBACK TRANSACTION SQLUnit_Wrapper
+		END CATCH
+	ROLLBACK TRANSACTION SQLUnit_Wrapper
+END
