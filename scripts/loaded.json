@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Basic-SQL-Suite",
+        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\",
+        "config": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\Basic-SQL-Suite.config.json",
+        "tests": [
+            {
+                "name": "insert_test",
+                "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\insert_test\\",
+                "files": [
+                    {
+                        "name": "insert_test.actual.json",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\insert_test\\insert_test.actual.json"
+                    },
+                    {
+                        "name": "insert_test.expected.json",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\insert_test\\insert_test.expected.json"
+                    },
+                    {
+                        "name": "insert_test.sql",
+                        "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\insert_test\\insert_test.sql"
+                    }
+                ]
+            }
+        ]
+    }
+]

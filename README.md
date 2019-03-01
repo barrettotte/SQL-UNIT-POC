@@ -35,8 +35,6 @@ A very basic POC MSSQL unit testing framework using Python and T-SQL.
 - [x] SQL-Unit wrapper Stored Procedure
 - [x] Testing with basic SQL
 - [ ] Test evaluation expected vs actual functionality
-- [ ] Testing with more advanced SQL and UDFs
-- [ ] Testing with Stored Procedures
 - [ ] CI / CD using GitLab and Docker for project
 - [ ] Error handling and polish of current code
 - [ ] Measure performance: Execution time
@@ -56,16 +54,8 @@ A very basic POC MSSQL unit testing framework using Python and T-SQL.
   * Right click server > restore database > device > add AdventureWorks2017.bak
 
 
-## References
-* Use SQL Server 2017 in Docker containers for your CI/CD process https://www.youtube.com/watch?v=HkWwaOG3aSw
-* Designed basic SQL tests around these:
-  * http://www.sqlservertutorial.net/sql-server-basics/
-  * https://goalkicker.com/MicrosoftSQLServerBook/
-* https://docs.microsoft.com/en-us/sql/?view=sql-server-2017
-
-
 ## Future Ideas/Improvements
-* GitLab build step and/or Jenkins Job
+* GitLab build step and/or Jenkins Job using SQLUnit on a test database
 * Deeper performance measurement
-* Generate graphs from test results and add to reports
+* Generate graphs from test results/performance and add to reports
 * Start experimenting with the possiblity of basic DB2 queries?

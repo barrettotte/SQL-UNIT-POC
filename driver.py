@@ -7,7 +7,7 @@ def main():
     args = sys.argv
     # TODO Pass in config path
     if len(args) == 2:
-        configPath = utils.readJson("..\\_configs\\SQL-UNIT-POC-Config.json")
+        configPath = utils.readJson("D:\\Programming\\_configs\\SQL-UNIT-POC-Config.json")
         SQLTestRunner(configPath, args[1]).execute()
     else:
         msg = "Too many arguments given." if len(args) > 2 else "No arguments given"

@@ -1,0 +1,31 @@
+[INFO  2019-02-28 20:29:06.732373] SQL Test Runner initializing
+[INFO  2019-02-28 20:29:06.735398] SQL Test Runner using directory [D:\Programming\SQL-UNIT-POC\SQL-Unit-Tests\]
+[INFO  2019-02-28 20:29:06.738383] Loading all test files
+[INFO  2019-02-28 20:29:06.742346] Found 1 suite(s) in [D:\Programming\SQL-UNIT-POC\SQL-Unit-Tests\]
+[INFO  2019-02-28 20:29:06.746336] SQL Test Runner targeted with suite [Basic-SQL-Suite]
+[INFO  2019-02-28 20:29:06.749327] Creating database connection to [BARRETT-MAIN\BARRETTSQL\BARRETT_TEST]
+[INFO  2019-02-28 20:29:06.775258] Initializing SQLUnit_Wrapper Stored Procedure
+[INFO  2019-02-28 20:29:06.786228] Running suite [Basic-SQL-Suite] with 1 test(s)
+[INFO  2019-02-28 20:29:06.789219]    Running test [insert_test]                 (1 of 1)
+[INFO  2019-02-28 20:29:06.793209]       Reading files
+[INFO  2019-02-28 20:29:06.795204]       Executing [insert_test.sql]
+[INFO  2019-02-28 20:29:06.806175] 
+[
+    {
+        "id": 1,
+        "role_name": "ROLE_USER"
+    },
+    {
+        "id": 2,
+        "role_name": "ROLE_ADMIN"
+    },
+    {
+        "id": 3,
+        "role_name": "ROLE_DEVELOPER"
+    },
+    {
+        "id": 258,
+        "role_name": "TEST"
+    }
+]
+[INFO  2019-02-28 20:29:06.810165] SQL Test Runner finished
