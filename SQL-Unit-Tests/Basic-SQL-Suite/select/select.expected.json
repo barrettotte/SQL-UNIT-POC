@@ -1,0 +1,38 @@
+{
+    "success": "true",
+    "columns": [
+        {
+            "name": "id",
+            "type": "BIGINT"
+        },
+        {
+            "name": "first_name",
+            "type": "VARCHAR(50)"
+        },
+        {
+            "name": "last_name",
+            "type": "VARCHAR(50)"
+        },
+        {
+            "name": "username",
+            "type": "VARCHAR(50)"
+        }
+    ],
+    "rows": [
+        {
+            "first_name": "barrett",
+            "last_name": "otte",
+            "username": "barrettotte"
+        },
+        {
+            "first_name": "some",
+            "last_name": "body",
+            "username": "somebody"
+        },
+        {
+            "first_name": "hello",
+            "last_name": "world",
+            "username": "helloworld123"
+        }
+    ]
+}

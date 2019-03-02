@@ -1,0 +1,18 @@
+{
+    "success": "true",
+    "columns": [
+        {
+            "name": "id",
+            "type": "BIGINT"
+        },
+        {
+            "name": "role_name",
+            "type": "VARCHAR(50)"
+        }
+    ],
+    "rows": [
+        {
+            "role_name": "ROLE_DEVELOPER"
+        }
+    ]
+}

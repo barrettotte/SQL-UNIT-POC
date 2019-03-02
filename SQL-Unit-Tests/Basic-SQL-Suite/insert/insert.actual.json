@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "role_name": "ROLE_USER"
+    },
+    {
+        "id": 2,
+        "role_name": "ROLE_ADMIN"
+    },
+    {
+        "id": 3,
+        "role_name": "ROLE_DEVELOPER"
+    },
+    {
+        "id": 10303,
+        "role_name": "WASD"
+    },
+    {
+        "id": 10304,
+        "role_name": "QWERTY"
+    },
+    {
+        "id": 10547,
+        "role_name": "TEST"
+    }
+]

@@ -1,0 +1,13 @@
+[
+    {
+        "__SQLUnit_FAILED__": true,
+        "SQL_STRING": "-- This is a simple test for for failing on purpose --\r\n\r\nSELECT * FROM [BARRETT_TEST].[dbo].[FAIL_ME];",
+        "RES_COLS": "WASD VARCHAR(50)|,|",
+        "ErrorNumber": 208,
+        "ErrorSeverity": 16,
+        "ErrorState": 1,
+        "ErrorProcedure": "dbo.SQLUnit_TmpSP",
+        "ErrorLine": 3,
+        "ErrorMessage": "Invalid object name 'BARRETT_TEST.dbo.FAIL_ME'."
+    }
+]

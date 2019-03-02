@@ -1,0 +1,206 @@
+{
+    "name": "Basic-SQL-Suite",
+    "total": 11,
+    "passed": 10,
+    "time": 256.3088,
+    "tests": [
+        {
+            "name": "create_table",
+            "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\create_table\\",
+            "files": [
+                {
+                    "name": "create_table.actual.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\create_table\\create_table.actual.json"
+                },
+                {
+                    "name": "create_table.expected.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\create_table\\create_table.expected.json"
+                },
+                {
+                    "name": "create_table.sql",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\create_table\\create_table.sql"
+                }
+            ]
+        },
+        {
+            "name": "delete",
+            "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\delete\\",
+            "files": [
+                {
+                    "name": "delete.actual.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\delete\\delete.actual.json"
+                },
+                {
+                    "name": "delete.expected.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\delete\\delete.expected.json"
+                },
+                {
+                    "name": "delete.sql",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\delete\\delete.sql"
+                }
+            ]
+        },
+        {
+            "name": "distinct",
+            "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\distinct\\",
+            "files": [
+                {
+                    "name": "distinct.actual.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\distinct\\distinct.actual.json"
+                },
+                {
+                    "name": "distinct.expected.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\distinct\\distinct.expected.json"
+                },
+                {
+                    "name": "distinct.sql",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\distinct\\distinct.sql"
+                }
+            ]
+        },
+        {
+            "name": "fail_onpurpose",
+            "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\fail_onpurpose\\",
+            "files": [
+                {
+                    "name": "fail_onpurpose.actual.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\fail_onpurpose\\fail_onpurpose.actual.json"
+                },
+                {
+                    "name": "fail_onpurpose.expected.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\fail_onpurpose\\fail_onpurpose.expected.json"
+                },
+                {
+                    "name": "fail_onpurpose.sql",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\fail_onpurpose\\fail_onpurpose.sql"
+                }
+            ]
+        },
+        {
+            "name": "fail_select",
+            "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\fail_select\\",
+            "files": [
+                {
+                    "name": "fail_select.actual.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\fail_select\\fail_select.actual.json"
+                },
+                {
+                    "name": "fail_select.expected.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\fail_select\\fail_select.expected.json"
+                },
+                {
+                    "name": "fail_select.sql",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\fail_select\\fail_select.sql"
+                }
+            ]
+        },
+        {
+            "name": "inner_join",
+            "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\inner_join\\",
+            "files": [
+                {
+                    "name": "inner_join.actual.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\inner_join\\inner_join.actual.json"
+                },
+                {
+                    "name": "inner_join.expected.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\inner_join\\inner_join.expected.json"
+                },
+                {
+                    "name": "inner_join.sql",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\inner_join\\inner_join.sql"
+                }
+            ]
+        },
+        {
+            "name": "insert",
+            "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\insert\\",
+            "files": [
+                {
+                    "name": "insert.actual.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\insert\\insert.actual.json"
+                },
+                {
+                    "name": "insert.expected.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\insert\\insert.expected.json"
+                },
+                {
+                    "name": "insert.sql",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\insert\\insert.sql"
+                }
+            ]
+        },
+        {
+            "name": "select",
+            "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\select\\",
+            "files": [
+                {
+                    "name": "select.actual.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\select\\select.actual.json"
+                },
+                {
+                    "name": "select.expected.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\select\\select.expected.json"
+                },
+                {
+                    "name": "select.sql",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\select\\select.sql"
+                }
+            ]
+        },
+        {
+            "name": "select_top",
+            "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\select_top\\",
+            "files": [
+                {
+                    "name": "select_top.actual.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\select_top\\select_top.actual.json"
+                },
+                {
+                    "name": "select_top.expected.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\select_top\\select_top.expected.json"
+                },
+                {
+                    "name": "select_top.sql",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\select_top\\select_top.sql"
+                }
+            ]
+        },
+        {
+            "name": "update",
+            "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\update\\",
+            "files": [
+                {
+                    "name": "update.actual.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\update\\update.actual.json"
+                },
+                {
+                    "name": "update.expected.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\update\\update.expected.json"
+                },
+                {
+                    "name": "update.sql",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\update\\update.sql"
+                }
+            ]
+        },
+        {
+            "name": "where",
+            "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\where\\",
+            "files": [
+                {
+                    "name": "where.actual.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\where\\where.actual.json"
+                },
+                {
+                    "name": "where.expected.json",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\where\\where.expected.json"
+                },
+                {
+                    "name": "where.sql",
+                    "path": "D:\\Programming\\SQL-UNIT-POC\\SQL-Unit-Tests\\Basic-SQL-Suite\\where\\where.sql"
+                }
+            ]
+        }
+    ]
+}

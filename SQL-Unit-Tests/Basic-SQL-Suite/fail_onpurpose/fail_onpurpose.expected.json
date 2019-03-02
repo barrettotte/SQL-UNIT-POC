@@ -1,0 +1,14 @@
+{
+    "success": "true",
+    "columns": [
+        {
+            "name": "WASD",
+            "type": "VARCHAR(50)"
+        }
+    ],
+    "rows": [
+        {
+            "WASD": "QWERTY"
+        }
+    ]
+}

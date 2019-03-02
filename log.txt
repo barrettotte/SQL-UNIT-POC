@@ -1,0 +1,71 @@
+[INFO  2019-03-01 21:20:45.765965] SQL Test Runner initializing
+[INFO  2019-03-01 21:20:45.768927] SQL Test Runner using directory [D:\Programming\SQL-UNIT-POC\SQL-Unit-Tests]
+[INFO  2019-03-01 21:20:45.771946] Loading all test files
+[INFO  2019-03-01 21:20:45.776906] Found 1 suite(s) in [D:\Programming\SQL-UNIT-POC\SQL-Unit-Tests]
+[INFO  2019-03-01 21:20:45.779899] SQL Test Runner targeted with suite [Basic-SQL-Suite]
+[INFO  2019-03-01 21:20:45.782890] Initializing SQLUnit_Wrapper Stored Procedure
+[INFO  2019-03-01 21:20:45.785882] Creating database connection to [BARRETT-MAIN\BARRETTSQL\BARRETT_TEST]
+[INFO  2019-03-01 21:20:45.826815] Running suite [Basic-SQL-Suite] with 11 test(s)
+[INFO  2019-03-01 21:20:45.829829]    Running test [create_table]                (1 of 11)
+[INFO  2019-03-01 21:20:45.832820]       Reading files
+[INFO  2019-03-01 21:20:45.835830]       Executing [create_table.sql]
+[INFO  2019-03-01 21:20:45.840772]       SQL Query failed
+[INFO  2019-03-01 21:20:45.844761]       Test Passed
+[INFO  2019-03-01 21:20:45.847783]       Test execution in 14.9314 ms
+[INFO  2019-03-01 21:20:45.850746]    Running test [delete]                      (2 of 11)
+[INFO  2019-03-01 21:20:45.853738]       Reading files
+[INFO  2019-03-01 21:20:45.856730]       Executing [delete.sql]
+[INFO  2019-03-01 21:20:45.861742]       SQL Query failed
+[INFO  2019-03-01 21:20:45.865705]       Test Passed
+[INFO  2019-03-01 21:20:45.868697]       Test execution in 13.9894 ms
+[INFO  2019-03-01 21:20:45.870692]    Running test [distinct]                    (3 of 11)
+[INFO  2019-03-01 21:20:45.873713]       Reading files
+[INFO  2019-03-01 21:20:45.877673]       Executing [distinct.sql]
+[INFO  2019-03-01 21:20:45.888643]       Test Passed
+[INFO  2019-03-01 21:20:45.891665]       Test execution in 17.9513 ms
+[INFO  2019-03-01 21:20:45.894629]    Running test [fail_onpurpose]              (4 of 11)
+[INFO  2019-03-01 21:20:45.897619]       Reading files
+[INFO  2019-03-01 21:20:45.901609]       Executing [fail_onpurpose.sql]
+[INFO  2019-03-01 21:20:45.909588] X      Test Failed
+[INFO  2019-03-01 21:20:45.912580]       Test execution in 14.9591 ms
+[INFO  2019-03-01 21:20:45.915572]    Running test [fail_select]                 (5 of 11)
+[INFO  2019-03-01 21:20:45.918563]       Reading files
+[INFO  2019-03-01 21:20:45.922554]       Executing [fail_select.sql]
+[INFO  2019-03-01 21:20:45.926569]       SQL Query failed
+[INFO  2019-03-01 21:20:45.930559]       Test Passed
+[INFO  2019-03-01 21:20:45.933523]       Test execution in 14.9863 ms
+[INFO  2019-03-01 21:20:45.937513]    Running test [inner_join]                  (6 of 11)
+[INFO  2019-03-01 21:20:45.940505]       Reading files
+[INFO  2019-03-01 21:20:45.943496]       Executing [inner_join.sql]
+[INFO  2019-03-01 21:20:45.956465]       Test Passed
+[INFO  2019-03-01 21:20:45.959454]       Test execution in 17.9529 ms
+[INFO  2019-03-01 21:20:45.962446]    Running test [insert]                      (7 of 11)
+[INFO  2019-03-01 21:20:45.966436]       Reading files
+[INFO  2019-03-01 21:20:45.969428]       Executing [insert.sql]
+[INFO  2019-03-01 21:20:45.981396]       Test Passed
+[INFO  2019-03-01 21:20:45.985386]       Test execution in 18.9502 ms
+[INFO  2019-03-01 21:20:45.988378]    Running test [select]                      (8 of 11)
+[INFO  2019-03-01 21:20:45.992367]       Reading files
+[INFO  2019-03-01 21:20:45.995358]       Executing [select.sql]
+[INFO  2019-03-01 21:20:46.005333]       Test Passed
+[INFO  2019-03-01 21:20:46.008323]       Test execution in 16.9551 ms
+[INFO  2019-03-01 21:20:46.012313]    Running test [select_top]                  (9 of 11)
+[INFO  2019-03-01 21:20:46.015331]       Reading files
+[INFO  2019-03-01 21:20:46.019319]       Executing [select_top.sql]
+[INFO  2019-03-01 21:20:46.029268]       Test Passed
+[INFO  2019-03-01 21:20:46.032259]       Test execution in 16.9549 ms
+[INFO  2019-03-01 21:20:46.036273]    Running test [update]                      (10 of 11)
+[INFO  2019-03-01 21:20:46.040263]       Reading files
+[INFO  2019-03-01 21:20:46.043230]       Executing [update.sql]
+[INFO  2019-03-01 21:20:46.048241]       SQL Query failed
+[INFO  2019-03-01 21:20:46.052227]       Test Passed
+[INFO  2019-03-01 21:20:46.056221]       Test execution in 15.954 ms
+[INFO  2019-03-01 21:20:46.060210]    Running test [where]                       (11 of 11)
+[INFO  2019-03-01 21:20:46.063177]       Reading files
+[INFO  2019-03-01 21:20:46.067166]       Executing [where.sql]
+[INFO  2019-03-01 21:20:46.076142]       Test Passed
+[INFO  2019-03-01 21:20:46.079134]       Test execution in 15.9326 ms
+[INFO  2019-03-01 21:20:46.083124] Results: 10 of 11 test(s) passed
+[INFO  2019-03-01 21:20:46.086143] Suite execution in 256.3088 ms
+[INFO  2019-03-01 21:20:46.094095] Cleaning up database and connection
+[INFO  2019-03-01 21:20:46.098083] SQL Test Runner finished

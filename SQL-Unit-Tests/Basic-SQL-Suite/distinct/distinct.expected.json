@@ -1,0 +1,29 @@
+{
+    "success": "true",
+    "columns": [
+        {
+            "name": "role_name",
+            "type": "VARCHAR(50)"
+        }
+    ],
+    "rows": [
+        {
+            "role_name": "QWERTY"
+        },
+        {
+            "role_name": "ROLE_ADMIN"
+        },
+        {
+            "role_name": "ROLE_DEVELOPER"
+        },
+        {
+            "role_name": "ROLE_USER"
+        },
+        {
+            "role_name": "TEST"
+        },
+        {
+            "role_name": "WASD"
+        }
+    ]
+}

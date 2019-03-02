@@ -32,6 +32,25 @@ BEGIN
     ELSE
         PRINT N'persons table already exists.';   
 END
+
+
+-- Create developers table --
+BEGIN
+    PRINT N'Creating developers table...'
+    IF NOT EXISTS (SELECT * FROM [BARRETT_TEST].INFORMATION_SCHEMA.TABLES 
+        WHERE TABLE_NAME='developers' AND TABLE_SCHEMA='dbo'
+    )
+        BEGIN
+            CREATE TABLE [BARRETT_TEST].[dbo].[developers](
+                id BIGINT IDENTITY(1,1) PRIMARY KEY,
+                username VARCHAR(50) NOT NULL,
+                fav_language VARCHAR(50) NOT NULL
+            )
+            PRINT N'developers table created.'
+        END
+    ELSE
+        PRINT N'developers table already exists.';   
+END
     
 
 -- Create roles table --

@@ -10,7 +10,7 @@ def readJson(path):
             with open(path, 'r') as jsonFile:
                 data = json.load(jsonFile)
         except FileNotFoundError:
-            fatalError("File [" + path + "] could not be found.")
+            log("File [" + path + "] could not be found.", "ERROR")
     else:
         log(path + " is not a JSON file. ", "ERROR")
     return data
@@ -20,7 +20,7 @@ def readFile(path):
         with open(path, 'r') as f:
             return f.readlines();
     except FileNotFoundError:
-        fatalError("File [" + path + "] could not be found.")
+        log("File [" + path + "] could not be found.", "ERROR")
     return ""
 
 def writeJson(path, data, sort=False):
@@ -38,19 +38,17 @@ def writeFile(path, buffer):
 
 def log(msg, msgType="INFO", path=".\\log.txt", writeFile=True, init=False, pref=""):
     msg = "[" + msgType.ljust(6) + getTimestamp() + "] " + pref + msg
-    try:
-        if init and os.path.exists(path): 
-            os.remove(path)
-        with open(path, "a+") as f:
-            f.write(msg + "\n")
-    except Exception as e:
-        print("[ERROR] Could not write to log")
-        print(e)
+    if init and os.path.exists(path):
+        os.remove(path)
+    if writeFile:
+        try:
+            mode = 'a+' if os.path.exists(path) else 'w+'
+            with open(path, mode) as f:
+                f.write(msg + "\n")
+        except Exception as e:
+            print("[ERROR " + getTimestamp() + "] Could not write to log")
+            print("[ERROR " + getTimestamp() + "] " + " "*3 + str(e))
     print(msg)
-    
-def fatalError(msg, writeFile=True):
-    log(msg, "FATAL", writeFile)
-    exit()
 
 def getTimestamp():
     return str(datetime.datetime.now())

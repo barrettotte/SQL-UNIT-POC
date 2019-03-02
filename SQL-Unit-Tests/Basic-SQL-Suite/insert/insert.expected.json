@@ -1,5 +1,4 @@
 {
-    "row-count": 4,
     "success": "true",
     "columns": [
         {
@@ -20,6 +19,12 @@
         },
         {
             "role_name": "ROLE_DEVELOPER"
+        },
+        {
+            "role_name": "WASD"
+        },
+        {
+            "role_name": "QWERTY"
         },
         {
             "role_name": "TEST"

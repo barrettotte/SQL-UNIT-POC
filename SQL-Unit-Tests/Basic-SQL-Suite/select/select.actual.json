@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "first_name": "barrett",
+        "last_name": "otte",
+        "username": "barrettotte"
+    },
+    {
+        "id": 2,
+        "first_name": "some",
+        "last_name": "body",
+        "username": "somebody"
+    },
+    {
+        "id": 3,
+        "first_name": "hello",
+        "last_name": "world",
+        "username": "helloworld123"
+    }
+]
