@@ -180,13 +180,13 @@ INNER JOIN [BARRETT_TEST].[dbo].[users] AS u
 
 
 ## Future Ideas/Improvements
+* Generate Report from test suite results
+* Generate formatted reports with HTML
 * CI / CD using GitLab and Docker for project
 * GitLab build step and/or Jenkins Job using SQLUnit on a test database
 * Deeper performance measurement
 * Generate graphs from test results/performance and add to reports
 * Start experimenting with the possiblity of basic DB2 queries?
-* [ ] Generate Report from test suite results
-* [ ] Generate formatted reports with HTML
 
 
 ## References
